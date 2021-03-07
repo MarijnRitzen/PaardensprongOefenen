@@ -4,7 +4,6 @@ body {
 
 .container {
     background-color: red;
-    padding: 3vw;
     height: 100vh;
     border-left: solid black 1vw;
     border-right: solid black 1vw;
@@ -12,19 +11,52 @@ body {
 
 .grid-container {
     display: grid;
-    grid-template-columns: 3.5fr repeat(3, 1fr) 3.5fr;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+        'title title title title'
+        'left-side board board right-side';
     gap: 10px;
     margin-bottom: 6vw;
 }
 
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .grid-container {
+        display: grid;
+        grid-template:
+            'title title'
+            'board board'
+            'left-side right-side';
+        gap: 10px;
+        margin-bottom: 6vw;
+    }
+}
+
 .title {
-    grid-column: 1/6;
+    grid-area: title;
     text-align: center;
-    padding-bottom: 2vh;
+    padding-bottom: 6vh;
+}
+
+.left-side {
+    grid-area: left-side;
+}
+
+.board {
+    grid-area: board;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1vw;
+    aspect-ratio: 1/1;
+}
+
+.right-side {
+    grid-area: right-side;
 }
 
 .grid-item {
-    height: 6vw;
+    height: calc(33.3% - 2vw);
     background-color: white;
     display: flex;
     justify-content: center;
@@ -39,6 +71,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    grid-area: fill;
 }
 
 .button {
@@ -46,7 +79,7 @@ body {
     margin: 0 3vw 0 3vw;
     background-color: grey;
     border-radius: 10%;
-    font-size: 2rem;
+    font-size: 1.8vw;
     text-align: center;
 }
 
@@ -76,13 +109,6 @@ body {
     height: 100vh;
     border-left: solid black 1vw;
     border-right: solid black 1vw;
-}
-
-.grid-container {
-    display: grid;
-    grid-template-columns: 3.5fr repeat(3, 1fr) 3.5fr;
-    gap: 10px;
-    margin-bottom: 6vw;
 }
 
 .grid-item {

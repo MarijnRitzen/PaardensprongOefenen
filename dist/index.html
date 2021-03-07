@@ -32,33 +32,38 @@
                     Oefen de paardensprong van 2 voor 12
                 </h1>
             </div>
-            <div class="fill">
+            <div class="left-side">
+                <div class="fill"></div>
+                <div id="resetTimer" class="fill button" data-toggle="tooltip" title="Shortcut: toets '1'!">
+                    <span >Reset Timer</span>
+                </div>
+                <div class="fill"></div>
             </div>
-            <div id="one" class="grid-item"></div>
-            <div id="two" class="grid-item"></div>
-            <div id="three" class="grid-item"></div>
-            <div class="fill"></div>
-            <div id="resetTimer" class="fill button" data-toggle="tooltip" title="Shortcut: toets '1'!">
-                <span >Reset Timer</span>
+            <div class="board">
+                <div id="one" class="grid-item"></div>
+                <div id="two" class="grid-item"></div>
+                <div id="three" class="grid-item"></div>
+                <div id="four" class="grid-item"></div>
+                <div class="center">
+                    <svg class="base-timer-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <g class="base-timer-circle">
+                        <circle id="circleTimer" class="base-timer-path-elapsed" cx="50" cy="50" r="45" stroke-dasharray="0 12 283"/>
+                        </g>
+                    </svg>
+                </div>
+                <div id="five" class="grid-item"></div>
+                <div id="six" class="grid-item"></div>
+                <div id="seven" class="grid-item"></div>
+                <div id="eight" class="grid-item"></div>
             </div>
-            <div id="four" class="grid-item"></div>
-            <div class="center">
-                <svg class="base-timer-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <g class="base-timer-circle">
-                      <circle id="circleTimer" class="base-timer-path-elapsed" cx="50" cy="50" r="45" stroke-dasharray="0 12 283"/>
-                    </g>
-                  </svg>
+            <div class="right-side">
+                <div class="fill"></div>
+                <div id="nieuwWoord" class="fill button" data-toggle="tooltip" title="Shortcut: toets '2'!">
+                    <span >Nieuw woord</span>
+                </div>
+                <div class="fill"></div>
             </div>
-            <div id="five" class="grid-item"></div>
-            <div id="nieuwWoord" class="fill button" data-toggle="tooltip" title="Shortcut: toets '2'!">
-                <span >Nieuw woord</span>
-            </div>
-            <div class="fill"></div>
-            <div id="six" class="grid-item"></div>
-            <div id="seven" class="grid-item"></div>
-            <div id="eight" class="grid-item"></div>
         </div> 
-
         <div class="input-group input-group-lg mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text">Antwoord</span>

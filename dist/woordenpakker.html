@@ -39,8 +39,9 @@
     obsvPromise.subscribe(result => {
         wordList = result.split("\n").filter(input => /^[a-z]{8}$/g.test(input));
         i = 0
+        console.log(wordList.length);
         wordList.forEach (word => {
-            if (i >= 7000 && i < 8000)
+            if (i >= 10000 && i < 11000)
             document.querySelector('.container').innerHTML += `<div onclick="handleClick('${word}');">${word}</div>`;
 
             i++;
