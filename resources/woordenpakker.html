@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/@reactivex/rxjs@5.4.3/dist/global/Rx.js"></script>
+    <title>Document</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+        }
+    </style>
+</head>
+<body>
+    <div class="container"></div>
+    
+
+    <script>
+        myStorage = window.localStorage;
+        var wordsReponsePromise = fetch('https://raw.githubusercontent.com/OpenTaal/opentaal-wordlist/master/wordlist.txt');
+
+    var textPromise = wordsReponsePromise.then(response => response.text());
+
+    const obsvPromise = Rx.Observable.fromPromise(textPromise);
+
+    let wordString = [];
+
+    let index = 0;
+
+    function handleClick(word) {
+        wordString[index] = word;
+        index++;
+        myStorage.setItem('wordstring', wordString.join(' '));
+        console.log(wordString.join(' '));
+    }
+
+    obsvPromise.subscribe(result => {
+        wordList = result.split("\n").filter(input => /^[a-z]{8}$/g.test(input));
+        i = 0
+        wordList.forEach (word => {
+            if (i >= 7000 && i < 8000)
+            document.querySelector('.container').innerHTML += `<div onclick="handleClick('${word}');">${word}</div>`;
+
+            i++;
+        });
+    })
+        
+    </script>
+</body>
+</html>

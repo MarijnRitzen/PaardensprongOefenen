@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/@reactivex/rxjs@5.4.3/dist/global/Rx.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>Paardensprong oefenen</title>
+    <style>
+
+        .container {
+            background-color: red;
+            padding: 3vw;
+            height: 100vh;
+            border-left: solid black 1vw;
+            border-right: solid black 1vw;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 3.5fr repeat(3, 1fr) 3.5fr;
+            gap: 10px;
+            margin-bottom: 6vw;
+        }
+
+        .grid-item {
+            height: 6vw;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 5vw;
+            font-weight: bold;
+        }
+
+        .fill {
+            height: 6vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button {
+            border: solid black 3px;
+            margin: 0 3vw 0 3vw;
+        }
+
+        .center {
+            height: 6vw;
+        }
+
+        .base-timer-svg {
+            height: 100%;
+            width: 100%;
+            transform: rotate(270deg);
+        }
+
+        /* Removes SVG styling that would hide the time label */
+        .base-timer-circle {
+            fill: none;
+            stroke: none;
+        }
+
+        /* The SVG path that displays the timer's progress */
+        .base-timer-path-elapsed {
+            stroke-width: 7px;
+            stroke: white;
+        }   
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="grid-container">
+            <div class="fill">
+            </div>
+            <div id="one" class="grid-item"></div>
+            <div id="two" class="grid-item"></div>
+            <div id="three" class="grid-item"></div>
+            <div class="fill"></div>
+            <div id="resetTimer" class="fill button">
+                <span >Reset Timer</span>
+            </div>
+            <div id="four" class="grid-item"></div>
+            <div class="center">
+                <svg class="base-timer-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <g class="base-timer-circle">
+                      <circle id="circleTimer" class="base-timer-path-elapsed" cx="50" cy="50" r="45" stroke-dasharray="0 12 283"/>
+                    </g>
+                  </svg>
+            </div>
+            <div id="five" class="grid-item"></div>
+            <div id="nieuwWoord" class="fill button">
+                <span >Nieuw woord</span>
+            </div>
+            <div class="fill"></div>
+            <div id="six" class="grid-item"></div>
+            <div id="seven" class="grid-item"></div>
+            <div id="eight" class="grid-item"></div>
+        </div> 
+
+        <div class="input-group input-group-lg mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Antwoord</span>
+            </div>
+            <input type="text" class="form-control"  id="answer">
+        </div>
+        
+
+    </div>
+
+
+    <script>
+        let wordString = "aandrang aanwinst aanrecht aanklaag aanstoot aandacht aambeeld aanduwen aanhoren aanmanen afvalzak afwasbak agitator afwassen afwezige alchemie allemaal afstoten algemeen allergie afwijzen alarmbel bekertje beklagen bedanken bedoelen behangen bedenken beginner bekeuren bekijken bekleden bedelaar biertent bierkaai bezwaren bijenwas bijholte bierbuik blikvoer bloesems bloembol bloedbad blaasjes bloedvat bladgoud bioritme bijziend bisschop blijheid bloemist bijstand bilspier biograaf bladhout bladhout blessure biologen bloempot blokkade bloembak buikwond brochure brandbom bullebak boxkleed broekrok broodmes breiwerk braadpan bungalow briljant charmant campagne buskaart bustocht ceintuur charisma chantage capsules centraal campings celibaat charmeur carillon carnaval catering celliste celstraf conditie comeback couveuse creaties creatief cursiste constant commotie collecte cyclamen crematie compleet criteria dansfilm dageraad dagdroom dakramen danspaal databank debutant debatten dankbaar dagtocht dageraad darmwand danseres dakkapel dartbord deegwaar deadline dagkaart dagtaken debiteur damsport dagomzet darkroom defensie diameter diabetes denkfout dezelfde deugniet delirium desolaat diagnose desnoods deurpost deeltaxi designer diefstal dierbaar directie dodencel doopceel donateur doelpunt digibeet dimensie dodenrit doopjurk doodziek doodslag dimlicht digitaal dievegge diepgang dirigent doorgang dominant dijbenen dienblad diffusie dijspier domotica doodstil document diervoer difterie dividend dompelen dompteur dikwijls drijfnat duikfles drukwerk drumstok dranghek driehoek drugtest duurzaam druppels drukfout dwangsom droogrek duinroos drumsolo drukinkt dressoir drukplek echtpaar economie eetkamer eisprong elleboog eigendom eekhoorn eerwraak eierdoos eerzucht eetpauze eiwitten ellendig elastiek eettafel eindnota eikentak eindzege eeltlaag ecologie economen eentonig eetbuien eicellen eierstok eigenaar eetgerei educatie empathie episodes epidemie enclaves ereteken ergernis explosie evenaren erewraak erfrente esdoorns ervaring ensemble energiek ereronde eurozone expansie eyeliner evolutie essentak erfzonde erelijst essentie failliet facelift favoriet fileleed flexibel filmster fijnstof festival farmacie fietsbel fietspad flapdrol fietsbus fantasie factoren feilbaar fietsrek filteren flaporen fanatiek feilloos fietstas filmdiva flamingo filmdoek facturen fabuleus feminist feedback fauteuil flaneren feestdag fungeren fotoblad fulltime frequent frietzak fraudeur fruitsap frikadel foutloos fractuur fruithap fragment frappant framboos gangetje gaskabel gastkoor gangkast gasmeter gasketel gaskraan gastvrij galsteen galajurk gastheer galwegen garnalen gebraden geborgen gebeente geestige gebulder geblader gebreken gedrocht gedroogd gedeelte gebruikt gebeuren geboorte gedaagde gegevens gedweild gebleekt gedaante gedonder geduldig gefocust gedachte gebitjes gekietel geldezel geldroof geldgids gekeuvel geldstuk geleider gelispel geintjes gekibbel geldkist geliefde gemeente gelovige geldlade gekroond geluiden geloftes gekwetst geluidje gesabbel gepoetst genezing genocide gentiaan gepieker geseling genodigd genereus gerommel geriater gerammel generiek geritsel geslaagd gerochel geneuzel genitaal geograaf geranium geroddel geslacht genetica";
+        let wordList = wordString.split(" ")
+
+        rightWay = [0, 4, 5, 1, 7, 3, 2, 6];
+        leftWay = [0, 6, 2, 3, 7, 1, 5, 4];
+
+        box1 = document.querySelector('#one');
+        box2 = document.querySelector('#two');
+        box3 = document.querySelector('#three');
+        box4 = document.querySelector('#four');
+        box5 = document.querySelector('#five');
+        box6 = document.querySelector('#six');
+        box7 = document.querySelector('#seven');
+        box8 = document.querySelector('#eight');
+
+        boxes = [box1, box2, box3, box4, box5, box6, box7, box8];
+
+        let word;
+
+        let answerBox = document.querySelector('#answer');
+
+        const TIME_FOR_PAARDENSPRONG = 20;
+        let timeElapsed;
+        let timerInterval;
+
+        function fillBoxes() {
+            $(answerBox).val("");
+            timeElapsed = 0;
+            clearInterval(timerInterval);
+            startTimer();
+            word = wordList[Math.floor(Math.random() * wordList.length)]
+            answerBox.style.color = "black";
+            $('.grid-item').each((index, element) => $(element).css("color", "black"));
+            let rightWayRound = Math.random();
+            let startPlace = Math.floor(Math.random() * 8); // [0..7]
+
+            if (rightWayRound > 0.5) {
+                for (let i = 0; i < 8; i++) {
+                    boxes[rightWay[(startPlace + i)%8]].innerHTML = word.charAt(i).toUpperCase();
+                }
+            } else {
+                for (let i = 0; i < 8; i++) {
+                    boxes[leftWay[(startPlace + i)%8]].innerHTML = word.charAt(i).toUpperCase();
+                }
+            }
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                timeElapsed += 0.05;
+                timeLeft = TIME_FOR_PAARDENSPRONG - timeElapsed;
+                
+                let fraction = timeElapsed / TIME_FOR_PAARDENSPRONG;
+                if (fraction < 1) {
+                    $('#circleTimer').attr('stroke-dasharray', `0 ${fraction * 283} 283`);
+                }
+            }, 50)
+        }
+
+        function checkAnswer(input) {
+            if (input.key == "Enter") {
+                if (answerBox.value == word) {
+                    answerBox.style.color = "green";
+                    $('.grid-item').each((index, element) => $(element).css("color", "green"));
+                    
+                } else {
+                    answerBox.style.color = "red";
+                    $('.grid-item').each((index, element) => $(element).css("color", "red"));
+                }
+            } else if (input.key == "1") {
+                fillBoxes();
+            } else if (input.key == "2") {
+
+            }
+        }
+
+        document.querySelector('#nieuwWoord').addEventListener('click', fillBoxes);
+        answerBox.addEventListener('keyup', checkAnswer);
+    </script>
+</body>
+</html>
