@@ -1,0 +1,130 @@
+body {
+    font-family: 'Cutive Mono', monospace;
+}
+
+.container {
+    background-color: red;
+    padding: 3vw;
+    height: 100vh;
+    border-left: solid black 1vw;
+    border-right: solid black 1vw;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 3.5fr repeat(3, 1fr) 3.5fr;
+    gap: 10px;
+    margin-bottom: 6vw;
+}
+
+.title {
+    grid-column: 1/6;
+    text-align: center;
+    padding-bottom: 2vh;
+}
+
+.grid-item {
+    height: 6vw;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    font-size: 5vw;
+    font-weight: bold;
+}
+
+.fill {
+    height: 6vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    border: solid black 3px;
+    margin: 0 3vw 0 3vw;
+    background-color: grey;
+    border-radius: 10%;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.center {
+    height: 6vw;
+}
+
+.base-timer-svg {
+    height: 100%;
+    width: 100%;
+    transform: rotate(270deg);
+}
+
+/* Removes SVG styling that would hide the time label */
+.base-timer-circle {
+    fill: none;
+    stroke: none;
+}
+
+/* The SVG path that displays the timer's progress */
+.base-timer-path-elapsed {
+    stroke-width: 7px;
+    stroke: white;
+}    .container {
+    background-color: red;
+    padding: 3vw;
+    height: 100vh;
+    border-left: solid black 1vw;
+    border-right: solid black 1vw;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 3.5fr repeat(3, 1fr) 3.5fr;
+    gap: 10px;
+    margin-bottom: 6vw;
+}
+
+.grid-item {
+    height: 6vw;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5vw;
+    font-weight: bold;
+}
+
+.fill {
+    height: 6vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    border: solid black 3px;
+    margin: 0 3vw 0 3vw;
+}
+
+.center {
+    height: 6vw;
+}
+
+.base-timer-svg {
+    height: 100%;
+    width: 100%;
+    transform: rotate(270deg);
+}
+
+/* Removes SVG styling that would hide the time label */
+.base-timer-circle {
+    fill: none;
+    stroke: none;
+}
+
+/* The SVG path that displays the timer's progress */
+.base-timer-path-elapsed {
+    stroke-width: 7px;
+    stroke: white;
+}   
