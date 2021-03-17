@@ -1,5 +1,6 @@
 body {
     font-family: 'Cutive Mono', monospace;
+    background-color: black;
 }
 
 .container {
@@ -11,36 +12,18 @@ body {
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-template-areas:
-        'title title title title'
-        'left-side board board right-side';
+        'title title title title title'
+        'board board board right-side right-side';
     gap: 10px;
     margin-bottom: 6vw;
-}
-
-
-@media only screen and (max-width: 768px) {
-    /* For mobile phones: */
-    .grid-container {
-        display: grid;
-        grid-template:
-            'title title'
-            'board board'
-            'left-side right-side';
-        gap: 10px;
-        margin-bottom: 6vw;
-    }
 }
 
 .title {
     grid-area: title;
     text-align: center;
-    padding-bottom: 6vh;
-}
-
-.left-side {
-    grid-area: left-side;
+    padding: 3vh 0 3vh;
 }
 
 .board {
@@ -48,43 +31,87 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1vw;
-    aspect-ratio: 1/1;
 }
 
 .right-side {
     grid-area: right-side;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-content: end;
 }
 
 .grid-item {
-    height: calc(33.3% - 2vw);
     background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: sans-serif;
-    font-size: 5vw;
+    font-size: 7vw;
     font-weight: bold;
 }
 
-.fill {
-    height: 6vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    grid-area: fill;
+.grid-item:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
 }
 
+
 .button {
+    margin: 1vh 0 1vh 0;
     border: solid black 3px;
-    margin: 0 3vw 0 3vw;
     background-color: grey;
     border-radius: 10%;
-    font-size: 1.8vw;
+    font-size: 4vh;
     text-align: center;
 }
 
+/* // Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) { 
+    .grid-item {
+        font-size: 8vw;
+    } 
+}
+
+/* // Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) { 
+    .grid-item {
+        font-size: 8.5vw;
+    } 
+}
+
+/* // Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) { 
+    .grid-container {
+        display: grid;
+        grid-template:
+            'title'
+            'board'
+            'right-side';
+        gap: 10px;
+    }
+
+    .grid-item {
+        font-size: 11vw;
+    }  
+}
+
+/* // Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { 
+    .grid-item {
+        font-size: 17vw;
+    }
+}
+
+
+
+
+
+
+
+/*  SVG below this */
 .center {
-    height: 6vw;
+    background-color: red;
 }
 
 .base-timer-svg {
@@ -103,39 +130,7 @@ body {
 .base-timer-path-elapsed {
     stroke-width: 7px;
     stroke: white;
-}    .container {
-    background-color: red;
-    padding: 3vw;
-    height: 100vh;
-    border-left: solid black 1vw;
-    border-right: solid black 1vw;
-}
-
-.grid-item {
-    height: 6vw;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 5vw;
-    font-weight: bold;
-}
-
-.fill {
-    height: 6vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.button {
-    border: solid black 3px;
-    margin: 0 3vw 0 3vw;
-}
-
-.center {
-    height: 6vw;
-}
+}   
 
 .base-timer-svg {
     height: 100%;

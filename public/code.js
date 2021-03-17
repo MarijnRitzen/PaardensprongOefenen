@@ -4,40 +4,22 @@ let wordList = wordString.split(" ")
 rightWay = [0, 4, 5, 1, 7, 3, 2, 6];
 leftWay = [0, 6, 2, 3, 7, 1, 5, 4];
 
-// box1 = document.querySelector('#one');
-// box2 = document.querySelector('#two');
-// box3 = document.querySelector('#three');
-// box4 = document.querySelector('#four');
-// box5 = document.querySelector('#five');
-// box6 = document.querySelector('#six');
-// box7 = document.querySelector('#seven');
-// box8 = document.querySelector('#eight');
-
-// boxes = [box1, box2, box3, box4, box5, box6, box7, box8];
-
 let word;
 
-boxes = $('.grid-item').map(function() {return $(this)}).get()
+boxes = $('.grid-item:not(.center)  ').map(function() {return $(this)}).get()
 
 const TIME_FOR_PAARDENSPRONG = 20;
 let timeElapsed;
 let timerInterval;
+let rightWayRound;
+let startPlace;
 
 function fillBoxes() {
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip('hide');
-      })
-    $('#answer').val("");
-    $('#answer').focus();
-    timeElapsed = 0;
-    clearInterval(timerInterval);
+    resetValues();
     startTimer();
     word = wordList[Math.floor(Math.random() * wordList.length)]
-    $('#answer').css("color", "black");
-    $('.grid-item').each((index, element) => $(element).css("color", "black"));
-    let rightWayRound = Math.random();
-    let startPlace = Math.floor(Math.random() * 8); // [0..7]
-
+    rightWayRound = Math.random();
+    startPlace = Math.floor(Math.random() * 8); // [0..7]
     if (rightWayRound > 0.5) {
         for (let i = 0; i < 8; i++) {
             boxes[rightWay[(startPlace + i)%8]].html(word.charAt(i).toUpperCase());
@@ -47,6 +29,17 @@ function fillBoxes() {
             boxes[leftWay[(startPlace + i)%8]].html(word.charAt(i).toUpperCase());
         }
     }
+}
+
+function resetValues() {
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip('hide');
+      })
+    $('#answerDiv').css('display', 'none');
+    timeElapsed = 0;
+    clearInterval(timerInterval);
+    $('#answer').css("color", "black");
+    $('.grid-item:not(.center)').each((index, element) => $(element).css({"color": "black", "background-color":"white"}));
 }
 
 function startTimer() {
@@ -61,20 +54,30 @@ function startTimer() {
     }, 50)
 }
 
-function checkAnswer(input) {
+function checkAnswer(input, time) {
     if (input.key == "Enter") {
-        if ($('#answer').val().toUpperCase() == word.toUpperCase()) {
+        if ($('#answer').val().toUpperCase() == word.toUpperCase()) { // Correct
             $('#answer').css("color", "green");
+            $('ul#times').append(`<li class="list-group-item list-group-item-success">Tijd gebruikt: ${timeElapsed.toFixed(2)}s</li>`);
             $('.grid-item').each((index, element) => $(element).css("color", "green"));
-        } else {
+            showSolution();
+        } else { // Incorrect
             $('#answer').css("color", "red");
+            $('ul#times').append(`<li class="list-group-item list-group-item-danger">Tijd gebruikt: ${timeElapsed.toFixed(2)}s</li>`);
             $('.grid-item').each((index, element) => $(element).css("color", "red"));
+            showSolution();
         }
     } else if (input.key == "1") {
         resetTimer();
     } else if (input.key == "2") {
         fillBoxes();
     }
+}
+
+function giveSolution() {
+    $('#answerDiv').css('display', 'inline-block');
+    $('#answer').val("");
+    $('#answer').focus();
 }
 
 function resetTimer() {
@@ -84,8 +87,45 @@ function resetTimer() {
     $('#answer').focus();
 }
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function showSolution() {
+    let currentWord = word;
+    if (rightWayRound > 0.5) {
+        for (let i = 0; i < 8; i++) {
+            console.log(currentWord, word);
+            if (currentWord != word) {
+                break;
+            }
+            boxes[rightWay[(startPlace + i)%8]].css({"color": "white", "background-color": "black"});
+            if (i < 4) {
+                await sleep(1000);
+            } else {
+                await sleep(600);
+            }
+        }
+    } else {
+        for (let i = 0; i < 8; i++) {
+            console.log(currentWord, word);
+            if (currentWord != word) {
+                break;
+            }
+            boxes[leftWay[(startPlace + i)%8]].css({"color": "white", "background-color": "black"});
+            if (i < 4) {
+                await sleep(1000);
+            } else {
+                await sleep(600);
+            }
+        }
+    }
+}
+
 $('#nieuwWoord').click(fillBoxes);
 $('#resetTimer').click(resetTimer);
+$('#showSolution').click(showSolution);
+$('#giveSolution').click(giveSolution);
 $('#answer').keyup(checkAnswer);
 
 // Enable tooltips

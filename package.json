@@ -2,9 +2,9 @@
   "name": "paardensprong",
   "version": "1.0.0",
   "description": "Paardensprong oefenen",
-  "main": "app.js",
+  "main": "public/code.js",
   "scripts": {
-    "start": "node api.js"
+    "build": "firebase deploy"
   },
   "author": "",
   "license": "ISC",
