@@ -37,7 +37,7 @@
     }
 
     obsvPromise.subscribe(result => {
-        wordList = result.split("\n").filter(input => /^[a-z]{8}$/g.test(input));
+        wordList = result.split("\n").filter(input => /^[a-z]{8}$/g.test(input)); ///^((?=.*ij).{9}|(?!.*ij).{8})$/gmi voor 8letter woorden zonder ij en 9 letter woorden met ij. 
         i = 0
         console.log(wordList.length);
         wordList.forEach (word => {
