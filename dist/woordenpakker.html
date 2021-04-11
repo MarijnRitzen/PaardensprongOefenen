@@ -49,11 +49,11 @@
     // })
 
     obsvPromise.subscribe(result => {
-        wordList = result.split("\n").filter(input => /^[a-z]{12}$/g.test(input));
+        wordList = result.split("\n").filter(input => /^[a-z]{8}$/g.test(input)); ///^((?=.*ij).{9}|(?!.*ij).{8})$/gmi voor 8letter woorden zonder ij en 9 letter woorden met ij. 
         i = 0
         console.log(wordList.length);
         wordList.forEach (word => {
-            if (i >= 1000 && i < 2000)
+            if (i >= 25000)
             document.querySelector('.container').innerHTML += `<div onclick="handleClick('${word}');">${word}</div>`;
 
             i++;
