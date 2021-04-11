@@ -1,28 +1,51 @@
+html {
+    padding: 0;
+    margin: 0;
+    min-height: 100%;
+}
+
 body {
     font-family: 'Cutive Mono', monospace;
-    background-color: black;
+    background-color: #D2D3D3;
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+p, h1 {
+    color: white;
 }
 
 .container {
-    background-color: red;
-    height: 100vh;
-    border-left: solid black 1vw;
-    border-right: solid black 1vw;
+    background-color: #555759;
+    min-height:  100vh;
+    height: 100%;
+    border-left: solid #E60000 0.5vw;
+    border-right: solid #E60000 0.5vw;
 }
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-template-areas:
-        'title title title title title'
-        'board board board right-side right-side';
+        'title title '
+        'board right-side';
     gap: 10px;
-    margin-bottom: 6vw;
+}
+
+
+.navbar a {
+    color:white;
+    text-decoration: none;
+}
+
+a {
+    cursor: pointer;
 }
 
 .title {
+    color: white;
     grid-area: title;
-    text-align: center;
     padding: 3vh 0 3vh;
 }
 
@@ -31,6 +54,10 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1vw;
+}
+
+.above-board {
+    grid-column: 1 / 4;
 }
 
 .right-side {
@@ -46,7 +73,6 @@ body {
     justify-content: center;
     align-items: center;
     font-family: sans-serif;
-    font-size: 7vw;
     font-weight: bold;
 }
 
@@ -66,19 +92,6 @@ body {
     text-align: center;
 }
 
-/* // Large devices (desktops, less than 1200px) */
-@media (max-width: 1199.98px) { 
-    .grid-item {
-        font-size: 8vw;
-    } 
-}
-
-/* // Medium devices (tablets, less than 992px) */
-@media (max-width: 991.98px) { 
-    .grid-item {
-        font-size: 8.5vw;
-    } 
-}
 
 /* // Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) { 
@@ -90,28 +103,12 @@ body {
             'right-side';
         gap: 10px;
     }
-
-    .grid-item {
-        font-size: 11vw;
-    }  
 }
-
-/* // Extra small devices (portrait phones, less than 576px) */
-@media (max-width: 575.98px) { 
-    .grid-item {
-        font-size: 17vw;
-    }
-}
-
-
-
-
-
 
 
 /*  SVG below this */
 .center {
-    background-color: red;
+    background-color: #555759;
 }
 
 .base-timer-svg {
@@ -149,3 +146,126 @@ body {
     stroke-width: 7px;
     stroke: white;
 }   
+
+/* Buttons */
+.container > div {
+    color: white;
+}
+
+.container > div a {
+    padding-bottom: 1px;
+}
+
+.container > div a:hover {
+    border-bottom: solid 1px red;
+    padding-bottom: 0px;
+}
+
+.buttons a {
+    font-size: 1.3rem;
+}
+
+/* input */
+.form__group {
+    position: relative;
+    padding: 15px 0 0;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.form__field {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid #fff;
+    outline: 0;
+    font-size: 1.3rem;
+    color: #fff;
+    padding: 7px 0;
+    cursor: pointer;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+.form__field::placeholder {
+    color: transparent;
+}
+
+.form__field:placeholder-shown ~ .form__label {
+    font-size: 1.3rem;
+    cursor: pointer;
+    top: 20px;
+}
+
+.form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: #fff;
+}
+
+.form__field:focus {
+    padding-bottom: 6px;
+    font-weight: 700;
+    border-width: 3px;
+    border-color: red;
+    border-image: white;
+    border-image-slice: 1;
+    cursor: pointer;
+}
+.form__field:focus ~ .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: white;
+}
+
+/* reset input */
+.form__field:required, .form__field:invalid {
+    box-shadow: none;
+}
+
+/** Woord */
+.woord-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1%;
+}
+
+.letter {
+    cursor: pointer;
+}
+
+.letter, .answer-letter {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:black;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.letter:after, .answer-letter:after{
+    content: "";
+    display: block;
+    padding-bottom: 135%;
+}
+
+.number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    font-weight: bold;
+}
+
+/* Timer */
+#timer {
+    height: 10px;
+    width: 100%;
+    background-color: white;
+}

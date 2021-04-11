@@ -11,10 +11,28 @@
       "**/node_modules/**"
     ],
     "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
+        {
+            "source": "/about",
+            "destination": "/about.html"
+        },
+        {
+            "source": "/het-woord",
+            "destination": "/woord.html"
+        },
+        {
+            "source": "/static/**",
+            "destination": "/static/**"
+        },
+        {
+            "source": "**",
+            "destination": "/index.html"
+        }
     ]
+  },
+  "emulators": {
+    "hosting": {
+        "host": "127.0.0.1",
+        "port": 6001
+      }
   }
 }

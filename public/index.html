@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="Interactief oefenen van de paardensprong van de spelshow 2 voor 12.">
 
     <!-- Script tags -->
     <script src="https://unpkg.com/@reactivex/rxjs@5.4.3/dist/global/Rx.js"></script>
@@ -12,7 +13,9 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="fittext.js"></script>
     <script src="code.js" defer></script>
+    
     
     <!-- Css tags -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -25,14 +28,27 @@
 </head>
 <body>
     <div class="container">
-
+        <div class="navbar d-flex justify-content-center">
+            <a class="px-2" href="/">Paardensprong</a>|
+            <a class="px-2" href="/het-woord">Het woord</a>|
+            <a class="px-2" href="/about">Over deze website</a>
+        </div>
         <div class="grid-container">
             <div class="title">
                 <h1>
                     Oefen de paardensprong van 2 voor 12
                 </h1>
+                <p>
+                    Oefen hier de paardensprong zoals die voorkomt in de spelshow 2 voor 12. Kies op "Nieuw Woord" voor een nieuwe uitdaging. Als je vindt dat je de tijd mag resetten
+                    dan kan je dat doen met de knop "Reset Timer". Als je het woord weet druk je op "Ik weet het!", dan zal de tijd stoppen en krijg je de kans om je antwoord in te voeren. 
+                    Als je er niet uitkomt kan je altijd kiezen om het antwoord te zien.
+                </p>
             </div>
             <div class="board">
+                <div class="above-board d-flex justify-content-between">
+                    <a id="resetTimer">Reset Timer</a>
+                    <a id="showSolution">Zie Antwoord</a>
+                </div>
                 <div id="one" class="grid-item"></div>
                 <div id="two" class="grid-item"></div>
                 <div id="three" class="grid-item"></div>
@@ -53,26 +69,18 @@
                 <ul id="times" class="list-group list-group-flush">
 
                 </ul>
-                <div id="nieuwWoord" class="button" data-toggle="tooltip" title="Shortcut: toets '2'!">
-                    <span >Nieuw Woord</span>
+                <div class="buttons d-flex justify-content-between">
+                    <a id="giveSolution">Ik weet het!</a>
+                    <a id="nieuwWoord">Nieuw Woord</a>
                 </div>
-                <div id="resetTimer" class="button" data-toggle="tooltip" title="Shortcut: toets '1'!">
-                    <span >Reset Timer</span>
-                </div>
-                <div id="showSolution" class="button">
-                    <span>Zie Antwoord</span>
-                </div>
-                <div id="giveSolution" class="button">
-                    <span>Ik weet het!</span>
-                </div>
-                <div id="answerDiv" class="input-group input-group-lg mb-3" style="display: none;">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Antwoord</span>
-                    </div>
-                    <input type="text" class="form-control" id="answer" autofocus>
+                <div class="form__group field">
+                    <input type="input" class="form__field" placeholder="Name" name="name" id='answer' required />
+                    <label for="name" class="form__label">Antwoord</label>
                 </div>
             </div>
-        </div> 
+            <footer>    
+            </footer>
+        </div>
         
     </div>
 

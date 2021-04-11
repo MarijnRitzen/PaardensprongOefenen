@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="Oefen interactief het 12-letterige woord van 2 voor 12 te raden.">
+
+    <!-- Script tags -->
+    <script src="https://unpkg.com/@reactivex/rxjs@5.4.3/dist/global/Rx.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="fittext.js"></script>
+    <script src="codeWoord.js" defer></script>
+    
+    <!-- Css tags -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap"> 
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Title -->
+    <title>Paardensprong oefenen</title>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar d-flex justify-content-center">
+            <a class="px-2" href="/">Paardensprong</a>|
+            <a class="px-2" href="/het-woord">Het woord</a>|
+            <a class="px-2" href="/about">Over deze website</a>
+        </div>
+        <!-- Beetje tekst -->
+        <div class="title">
+            <h1>
+                Oefen het woord van 2 voor 12
+            </h1>
+            <p>
+                Oefen hier het 12 letterige woord van 2 voor 12. Veel mensen krijgen deze uiteindelijk wel maar moeten daar soms heel veel voor betalen omdat 
+                ze in de stress raken. Als je het hier goed oefent en zelfvertrouwen opbouwt hoef je hopelijk bijna niks meer te betalen!
+            </p>
+        </div>
+        <!-- Knoppen -->
+        <div class="d-flex justify-content-between">
+            <a id="resetTimer">Reset Timer</a>
+            <a id="showSolution">Zie Antwoord</a>
+        </div>
+        <div id="timer" class="my-2"></div>
+        <!-- Het woord -->
+        <div class="woord-grid pb-5 pt-1">
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="letter"></div>
+            <div class="number">1</div>
+            <div class="number">2</div>
+            <div class="number">3</div>
+            <div class="number">4</div>
+            <div class="number">5</div>
+            <div class="number">6</div>
+            <div class="number">7</div>
+            <div class="number">8</div>
+            <div class="number">9</div>
+            <div class="number">10</div>
+            <div class="number">11</div>
+            <div class="number">12</div>
+            <div class="answer-letter"></div>
+            <div class="answer-letter"></div>
+            <div class="answer-letter"></div>
+            <div class="answer-letter"></div>
+            <div class="answer-letter"></div>
+            <div class="answer-letter"></div>
+            <div class="answer-letter"></div>
+            <div class="answer-letter"></div>
+            <div class="answer-letter"></div>
+            <div class="answer-letter"></div>
+            <div class="answer-letter"></div>
+            <div class="answer-letter"></div>
+        </div>
+
+        <div class="buttons d-flex justify-content-end">
+            <a id="nieuwWoord">Nieuw Woord</a>
+        </div>
+        <div id="answerbox" class="form__group field">
+            <input type="input" class="form__field" placeholder="Name" name="name" id='answer' required />
+            <label for="name" class="form__label">Geef Antwoord</label>
+        </div>
+    </div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/8.3.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="/__/firebase/8.3.0/firebase-analytics.js"></script>
+
+    <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js"></script>
+</body>
+</html>
